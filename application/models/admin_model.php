@@ -27,8 +27,9 @@
 
     //Fetch Draw data
     function get_draws(){
+      date_default_timezone_set('Asia/Karachi');
       $date = date('Y-m-d');
-      $sql = "SELECT * FROM draw";
+      $sql = "SELECT * FROM draw Where date_time ='".$date."' ORDER BY time";
       $data = $this->db->query($sql)->result_array();
       if($data){
         return $data;

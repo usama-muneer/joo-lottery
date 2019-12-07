@@ -5,6 +5,7 @@
     <title>hello</title>
   </head>
   <body>
-    world
+
+    world <?php date_default_timezone_set('Asia/Karachi'); echo date('Y/m/d'); ?>
   </body>
 </html>

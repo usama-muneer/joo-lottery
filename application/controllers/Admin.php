@@ -17,9 +17,13 @@ class Admin extends CI_Controller {
 			$data['draw_data'] = $this->admin_model->get_draws();
 		  $this->load->view('admin/index', $data);
 	  }
+    else{
+      $this->load->view('admin/index');
+    }
   }
 
   public function insert_draw(){
+    date_default_timezone_set('Asia/Karachi');
     $date_time = date('Y-m-d');
     $time      = $_POST['time'];
     $number = $_POST['number'];
@@ -28,7 +32,8 @@ class Admin extends CI_Controller {
       $data = array(
         "date_time" => $date_time,
         "time"    => $time,
-        "number"  => $number
+        "number"  => $number,
+        "checked" => 'No'
       );
       $this->admin_model->insert_draw($data);
       echo '<div class="alert alert-success">

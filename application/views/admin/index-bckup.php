@@ -28,11 +28,11 @@
         <div class="col-md-2"></div>
         <div class="col-md-8">
           <?php
-              $disable1 = '';
-              $disable2 = '';
-              $disable3 = '';
-              $disable4 = '';
               if(isset($draw_data)){
+                $disable1 = '';
+                $disable2 = '';
+                $disable3 = '';
+                $disable4 = '';
                 foreach ($draw_data as $draw_row) {
                   date_default_timezone_set('Asia/Karachi');
                   $date_time = date('Y-m-d');
@@ -50,7 +50,7 @@
                   }
                 }
               }
-           ?>
+          ?>
           <!-- 13:15:00 -->
           <div class="col-md-12 input-group mb-3">
             <div class="input-group-prepend">
@@ -122,7 +122,7 @@
               }
               else{
                 echo "<tr>
-                            <td colspan=4 class='text-center text-info'><b>You haven't enter any draw</b></td>
+                            <td>Enter data</td>
                           </tr>";
               }
             ?>

@@ -99,11 +99,24 @@
       <!-- Portfolio Grid Items -->
       <div class="row">
         <div class="col-md-3">
-          <input type="date" class="form-control" name="" value="">
+          <input type="date" class="form-control" name="date" value="date" id="searchdate">
         </div>
         <div class="col-md-2">
-          <input type="submit" class="btn btn-info form-control" name="" value="Search By Date">
+          <button type="button" name="button"  class="btn btn-info form-control" onclick="searchByDate()">Search By Date</button>
         </div>
+        <script type="text/javascript">
+          function searchByDate(){
+            var date = $('#searchdate').val();
+            $.ajax({
+              url:"<?php echo base_url(); ?>welcome/searchDrawByDate",
+              method: "POST",
+              data: {date_time:date},
+              success: function(data) {
+                $('#searchDrawData').html(data);
+              }
+            });
+          }
+        </script>
         <div class="col-md-7">
           <table class="table table-striped table-bordered table-sm">
             <thead class="bg-dark text-white">
@@ -114,25 +127,26 @@
                 <th scope="col">Number</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
+            <tbody id="searchDrawData">
+              <?php
+                $srno = 1;
+                if(isset($draw_data)){
+                  foreach ($draw_data as $draw_row) {
+                    echo "<tr>
+                                <th scope='row'>".$srno."</th>
+                                <td>".substr($draw_row['date_time'], 0,10)."</td>
+                                <td>".$draw_row['time']."</td>
+                                <td>".$draw_row['number']."</td>
+                              </tr>";
+                    $srno++;
+                  }
+                }
+                else{
+                  echo "<tr>
+                              <td colspan=4 class='text-center text-info'><b>You haven't enter any draw</b></td>
+                            </tr>";
+                }
+              ?>
             </tbody>
           </table>
         </div>

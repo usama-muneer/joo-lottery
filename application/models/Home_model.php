@@ -24,22 +24,30 @@
     }
     //admin validate code end
 
-    public function admin_login(){
-      $username = $_POST["username"];
-      $password = $_POST['password'];
-      $this->load->model("home_model");
-      if($this->homepage_model->admin_validate($username , $password)){
-        $res = 'ok';
-        $sessionData = array(
-          'username'  => $username,
-          'logged_in' => TRUE
-        );
-        $this->session->set_userdata($sessionData);
+    //Fetch Draw data
+    function get_draws(){
+      date_default_timezone_set('Asia/Karachi');
+      $date = date('Y-m-d');
+      $sql = "SELECT * FROM draw Where checked = 'Yes' and date_time ='".$date."' ORDER BY time";
+      $data = $this->db->query($sql)->result_array();
+      if($data){
+        return $data;
       }
       else{
-        $res = 'err';
+        return false;
       }
-      echo $res;
-      die;
     }
+
+    //Fetch Draw data vy given date
+    function searchDrawByDate($date_time){
+      $sql = "SELECT * FROM draw Where checked = 'Yes' and date_time ='".$date_time."' ORDER BY time";
+      $data = $this->db->query($sql)->result_array();
+      if($data){
+        return $data;
+      }
+      else{
+        return false;
+      }
+    }
+
   }
