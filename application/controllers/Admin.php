@@ -2,22 +2,52 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Admin extends CI_Controller {
-
-  public function index(){
-    
-		$this->load->view('admin/index');
+  function __construct(){
+	    parent::__construct();
+			if($this->session->userdata('logged_in') == false){
+				redirect(base_url('/'));
+			}
 	}
 
-  public function insert_draw(){
-      $data = array(
-        "date" => date('Y-m-d h:m:s'),
-        "time"    => $_POST['time'],
-        "number"  => $_POST['number']
-      );
-      $this->load->model('admin_model');
-      $this->admin_model->insert_draw($data);
-      $res = 'ok';
-      echo $res;
-      die;
+
+  public function index(){
+    $data = array();
+		$this->load->model('admin_model');
+		if($this->admin_model->get_draws()){
+			$data['draw_data'] = $this->admin_model->get_draws();
+		  $this->load->view('admin/index', $data);
+	  }
   }
+
+  public function insert_draw(){
+    $date_time = date('Y-m-d');
+    $time      = $_POST['time'];
+    $number = $_POST['number'];
+    $this->load->model('admin_model');
+    if($this->admin_model->draw_validate($date_time, $time)){
+      $data = array(
+        "date_time" => $date_time,
+        "time"    => $time,
+        "number"  => $number
+      );
+      $this->admin_model->insert_draw($data);
+      echo '<div class="alert alert-success">
+                  <strong>Success!</strong>
+                </div>';
+      die;
+    }else{
+      echo '<div class="alert alert-danger alert-dismissible">
+                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                  <strong>Error!</strong> Today slot has been filled.
+                </div>';
+      die;
+    }
+  }
+
+  public function logout(){
+		$this->session->unset_userdata('logged_in');
+		$this->session->unset_userdata('username');
+		$this->session->sess_destroy();
+		redirect(base_url('/'));
+	}
 }

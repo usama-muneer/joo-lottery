@@ -89,7 +89,7 @@ class Welcome extends CI_Controller {
 		$username = $_POST["username"];
 		$password = $_POST['password'];
 		$this->load->model("home_model");
-		if($this->home_model->admin_validate($username , $password)){
+		$this->home_model->admin_validate($username , $password)){
 			$res = 'ok';
 			$sessionData = array(
 				'username'  => $username,

@@ -5,20 +5,27 @@
     <title>Welcome to JooLottery</title>
     <link href="<?php echo base_url(); ?>assets/css/freelancer.min.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/vendor/fontawesome-free/css/all.min.css'" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   </head>
   <body>
       <div class="jumbotron bg-dark">
         <h1 class="text-center text-white">Welcome to Joo Lottery</h1>
+        <form class="" action="<?php echo base_url(); ?>admin/logout" method="post">
+          <input type="submit" class="float-right bg-info" value="Logout" style="background:none;border:none;">
+        </form>
       </div>
 
       <!-- Draw Entery Form  -->.
-      <div class="container row">
-        <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-12 text-center">
           <h5>Enter Draw numbers for todway:</h5>
           <br>
         </div>
-
-
+        <div class="col-md-3"></div>
+        <div class="col-md-6" id="draw-error"></div>
+        <div class="col-md-3"></div>
+        <div class="col-md-2"></div>
         <div class="col-md-8">
           <!-- 13:1:00 -->
           <div class="col-md-12 input-group mb-3">
@@ -28,7 +35,6 @@
             <input type="number" class="form-control" name="time1315-number" placeholder="Enter Draw Number Here:" id="time1315-number" aria-label="Username" aria-describedby="basic-addon1">
             <input type="hidden" name="time1315" id="time1315" value="13:15:00">
             <button type="button" name="button-1315" class="btn btn-success" onclick="btn_1315()" id="btn-1315">Confrm</button>
-
           </div>
 
           <!-- 15:15:00 -->
@@ -62,8 +68,7 @@
           </div>
 
         </div>
-        <div class="col-md-4" id="draw-error">
-        </div>
+        <div class="col-md-2" id=""></div>
       </div>
       <hr>
       <!-- Display Daily Draw  -->.
@@ -78,12 +83,21 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
+            <?php
+              $srno = 1;
+              if(isset($draw_data)){
+                foreach ($draw_data as $draw_row) {
+                  echo "<tr>
+                              <th scope='row'>".$srno."</th>
+                              <td>".substr($draw_row['date_time'], 0,10)."</td>
+                              <td>".$draw_row['time']."</td>
+                              <td>".$draw_row['number']."</td>
+                            </tr>";
+                  $srno++;
+                }
+              }
+            ?>
+
           </tbody>
         </table>
       </div>
@@ -108,8 +122,8 @@
             url:"<?php echo base_url(); ?>admin/insert_draw",
             method: "POST",
             data: {time:time,number:number},
-            success:function(result){
-              $('#draw-error').html('<div class="alert alert-success" id="alert"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Successfully added</strong></div>');
+            success: function(data) {
+              $('#draw-error').html(data);
             }
           });
         }
@@ -131,8 +145,8 @@
             url:"<?php echo base_url(); ?>admin/insert_draw",
             method: "POST",
             data: {time:time,number:number},
-            success:function(result){
-              $('#draw-error').html('<div class="alert alert-success" id="alert"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Successfully added</strong></div>');
+            success: function(data) {
+              $('#draw-error').html(data);
             }
           });
         }
@@ -154,8 +168,8 @@
             url:"<?php echo base_url(); ?>admin/insert_draw",
             method: "POST",
             data: {time:time,number:number},
-            success:function(result){
-              $('#draw-error').html('<div class="alert alert-success" id="alert"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Successfully added</strong></div>');
+            success: function(data) {
+              $('#draw-error').html(data);
             }
           });
         }
@@ -177,12 +191,13 @@
             url:"<?php echo base_url(); ?>admin/insert_draw",
             method: "POST",
             data: {time:time,number:number},
-            success:function(result){
-              $('#draw-error').html('<div class="alert alert-success" id="alert"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Successfully added</strong></div>');
+            success: function(data) {
+              $('#draw-error').html(data);
             }
           });
         }
       }
+
     </script>
   </body>
 </html>
