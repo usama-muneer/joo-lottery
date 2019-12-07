@@ -12,22 +12,22 @@
   <title>Joo Lottery</title>
 
   <!--====== Favicon Icon ======-->
-  <link rel="shortcut icon" href="<?php echo base_url(); ?>'assets/img/raffle-draw.png" type="image/png">
+  <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/img/raffle-draw.png" type="image/png">
 
   <!-- Custom fonts for this theme -->
-  <link href="<?php echo base_url(); ?>'assets/vendor/fontawesome-free/css/all.min.css'" rel="stylesheet" type="text/css">
+  <link href="<?php echo base_url(); ?>assets/vendor/fontawesome-free/css/all.min.css'" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
   <!-- Theme CSS -->
-  <link href="<?php echo base_url(); ?>'assets/css/freelancer.min.css" rel="stylesheet">
+  <link href="<?php echo base_url(); ?>assets/css/freelancer.min.css" rel="stylesheet">
 
 </head>
 
 <body id="page-top">
 
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+  <nav class="navbar navbar-expand-lg text-uppercase fixed-top" id="mainNav"  style="background-color: #5c0383; opacity: 90%;">
     <div class="container">
       <a class="navbar-brand js-scroll-trigger" href="#page-top">Joo Lottery</a>
       <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,7 +46,7 @@
             <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">Contact</a>
           </li>
           <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded" href="#">Login</a>
+            <a class="nav-link py-3 px-0 px-lg-3 rounded" data-toggle="modal" data-target="#exampleModal" href="#">Login</a>
           </li>
         </ul>
       </div>
@@ -62,13 +62,13 @@
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img class="d-block w-100" src="<?php echo base_url(); ?>assets/'img/bimage8.png" alt="First slide">
+      <img class="d-block w-100" src="<?php echo base_url(); ?>assets/img/banner12.png" alt="First slide">
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="<?php echo base_url(); ?>assets/img/bimage3.jpg" alt="Second slide">
+      <img class="d-block w-100" src="<?php echo base_url(); ?>assets/img/banner3.jpg" alt="Second slide">
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="<?php echo base_url(); ?>assets/img/bimage2.jpg" alt="Third slide">
+      <img class="d-block w-100" src="<?php echo base_url(); ?>assets/img/banner2.jpg" alt="Third slide">
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -203,6 +203,38 @@
     </div>
   </section>
 
+<!--  Model Section -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" align="center" id="exampleModalLabel">Login Form</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="container">
+      <form>
+          <div id="login-error"></div>
+        <div class="form-group">
+          <label for="username" class="col-form-label"><b>Username:</b></label>
+          <input type="username" name="username" class="form-control" id="username">
+        </div>
+        <div class="form-group">
+          <label for="password" class="col-form-label"><b>Password:</b></label>
+          <input type="password" name="password" class="form-control" id="password">
+        </div>
+        <div class="form-group">
+          <button type="button" class="btn btn-primary" id="login-btn"  onclick="admin_login()">Login</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+
+
   <!-- Footer -->
   <footer class="footer text-center">
     <div class="container">
@@ -258,254 +290,52 @@
 
   <!-- Portfolio Modals -->
 
-  <!-- Portfolio Modal 1 -->
-  <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-labelledby="portfolioModal1Label" aria-hidden="true">
-    <div class="modal-dialog modal-xl" role="document">
-      <div class="modal-content">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">
-            <i class="fas fa-times"></i>
-          </span>
-        </button>
-        <div class="modal-body text-center">
-          <div class="container">
-            <div class="row justify-content-center">
-              <div class="col-lg-8">
-                <!-- Portfolio Modal - Title -->
-                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Log Cabin</h2>
-                <!-- Icon Divider -->
-                <div class="divider-custom">
-                  <div class="divider-custom-line"></div>
-                  <div class="divider-custom-icon">
-                    <i class="fas fa-star"></i>
-                  </div>
-                  <div class="divider-custom-line"></div>
-                </div>
-                <!-- Portfolio Modal - Image -->
-                <img class="img-fluid rounded mb-5" src="img/portfolio/cabin.png" alt="">
-                <!-- Portfolio Modal - Text -->
-                <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
-                <button class="btn btn-primary" href="#" data-dismiss="modal">
-                  <i class="fas fa-times fa-fw"></i>
-                  Close Window
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Portfolio Modal 2 -->
-  <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-labelledby="portfolioModal2Label" aria-hidden="true">
-    <div class="modal-dialog modal-xl" role="document">
-      <div class="modal-content">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">
-            <i class="fas fa-times"></i>
-          </span>
-        </button>
-        <div class="modal-body text-center">
-          <div class="container">
-            <div class="row justify-content-center">
-              <div class="col-lg-8">
-                <!-- Portfolio Modal - Title -->
-                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Tasty Cake</h2>
-                <!-- Icon Divider -->
-                <div class="divider-custom">
-                  <div class="divider-custom-line"></div>
-                  <div class="divider-custom-icon">
-                    <i class="fas fa-star"></i>
-                  </div>
-                  <div class="divider-custom-line"></div>
-                </div>
-                <!-- Portfolio Modal - Image -->
-                <img class="img-fluid rounded mb-5" src="img/portfolio/cake.png" alt="">
-                <!-- Portfolio Modal - Text -->
-                <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
-                <button class="btn btn-primary" href="#" data-dismiss="modal">
-                  <i class="fas fa-times fa-fw"></i>
-                  Close Window
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Portfolio Modal 3 -->
-  <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-labelledby="portfolioModal3Label" aria-hidden="true">
-    <div class="modal-dialog modal-xl" role="document">
-      <div class="modal-content">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">
-            <i class="fas fa-times"></i>
-          </span>
-        </button>
-        <div class="modal-body text-center">
-          <div class="container">
-            <div class="row justify-content-center">
-              <div class="col-lg-8">
-                <!-- Portfolio Modal - Title -->
-                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Circus Tent</h2>
-                <!-- Icon Divider -->
-                <div class="divider-custom">
-                  <div class="divider-custom-line"></div>
-                  <div class="divider-custom-icon">
-                    <i class="fas fa-star"></i>
-                  </div>
-                  <div class="divider-custom-line"></div>
-                </div>
-                <!-- Portfolio Modal - Image -->
-                <img class="img-fluid rounded mb-5" src="img/portfolio/circus.png" alt="">
-                <!-- Portfolio Modal - Text -->
-                <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
-                <button class="btn btn-primary" href="#" data-dismiss="modal">
-                  <i class="fas fa-times fa-fw"></i>
-                  Close Window
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Portfolio Modal 4 -->
-  <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-labelledby="portfolioModal4Label" aria-hidden="true">
-    <div class="modal-dialog modal-xl" role="document">
-      <div class="modal-content">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">
-            <i class="fas fa-times"></i>
-          </span>
-        </button>
-        <div class="modal-body text-center">
-          <div class="container">
-            <div class="row justify-content-center">
-              <div class="col-lg-8">
-                <!-- Portfolio Modal - Title -->
-                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Controller</h2>
-                <!-- Icon Divider -->
-                <div class="divider-custom">
-                  <div class="divider-custom-line"></div>
-                  <div class="divider-custom-icon">
-                    <i class="fas fa-star"></i>
-                  </div>
-                  <div class="divider-custom-line"></div>
-                </div>
-                <!-- Portfolio Modal - Image -->
-                <img class="img-fluid rounded mb-5" src="img/portfolio/game.png" alt="">
-                <!-- Portfolio Modal - Text -->
-                <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
-                <button class="btn btn-primary" href="#" data-dismiss="modal">
-                  <i class="fas fa-times fa-fw"></i>
-                  Close Window
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Portfolio Modal 5 -->
-  <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-labelledby="portfolioModal5Label" aria-hidden="true">
-    <div class="modal-dialog modal-xl" role="document">
-      <div class="modal-content">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">
-            <i class="fas fa-times"></i>
-          </span>
-        </button>
-        <div class="modal-body text-center">
-          <div class="container">
-            <div class="row justify-content-center">
-              <div class="col-lg-8">
-                <!-- Portfolio Modal - Title -->
-                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Locked Safe</h2>
-                <!-- Icon Divider -->
-                <div class="divider-custom">
-                  <div class="divider-custom-line"></div>
-                  <div class="divider-custom-icon">
-                    <i class="fas fa-star"></i>
-                  </div>
-                  <div class="divider-custom-line"></div>
-                </div>
-                <!-- Portfolio Modal - Image -->
-                <img class="img-fluid rounded mb-5" src="img/portfolio/safe.png" alt="">
-                <!-- Portfolio Modal - Text -->
-                <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
-                <button class="btn btn-primary" href="#" data-dismiss="modal">
-                  <i class="fas fa-times fa-fw"></i>
-                  Close Window
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Portfolio Modal 6 -->
-  <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-labelledby="portfolioModal6Label" aria-hidden="true">
-    <div class="modal-dialog modal-xl" role="document">
-      <div class="modal-content">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">
-            <i class="fas fa-times"></i>
-          </span>
-        </button>
-        <div class="modal-body text-center">
-          <div class="container">
-            <div class="row justify-content-center">
-              <div class="col-lg-8">
-                <!-- Portfolio Modal - Title -->
-                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Submarine</h2>
-                <!-- Icon Divider -->
-                <div class="divider-custom">
-                  <div class="divider-custom-line"></div>
-                  <div class="divider-custom-icon">
-                    <i class="fas fa-star"></i>
-                  </div>
-                  <div class="divider-custom-line"></div>
-                </div>
-                <!-- Portfolio Modal - Image -->
-                <img class="img-fluid rounded mb-5" src="img/portfolio/submarine.png" alt="">
-                <!-- Portfolio Modal - Text -->
-                <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
-                <button class="btn btn-primary" href="#" data-dismiss="modal">
-                  <i class="fas fa-times fa-fw"></i>
-                  Close Window
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/vendor/jquery/jquery.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Plugin JavaScript -->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Contact Form JavaScript -->
-  <script src="js/jqBootstrapValidation.js"></script>
-  <script src="js/contact_me.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/jqBootstrapValidation.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/contact_me.js"></script>
 
   <!-- Custom scripts for this template -->
-  <script src="js/freelancer.min.js"></script>
-
+  <script src="<?php echo base_url(); ?>assets/js/freelancer.min.js"></script>
+  <script type="text/javascript">
+  function admin_login(){
+    var username = $('#username').val();
+    var password = $('#password').val();
+    if(username == '' ){
+      $('#login-error').html('<div class="alert alert-danger " id="alert"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>Enter your username</div>');
+        return false;
+    }else if(password == ''){
+      $('#login-error').html('<div class="alert alert-danger " id="alert"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>Enter your passowrd</div>');
+        return false;
+    }else if(password.toString().length < 8 ){
+      $('#login-error').html('<div class="alert alert-danger " id="alert"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>Password must be at least 8 character long.</div>');
+        return false;
+    }else{
+      $.ajax({
+        url:"<?php echo base_url(); ?>welcome/admin_login",
+        method: "POST",
+        data: {username:username,password:password},
+        success:function(result){
+          if(result == 'ok'){
+            $('#login-btn').attr("disabled","disabled");
+            $('#login-error').html('<div class="alert alert-success" id="alert"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Redirecting...</strong></div>');
+            setInterval(function () {
+              window.location.replace("http://localhost:8080/JooLottery/adminhome");
+            },1000);
+          }else{
+            $('#login-error').html('<div class="alert alert-danger " id="alert"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error!</strong> Invalid Data </div>');
+          }
+        }
+      });
+    }
+  }
+</script>
 </body>
 
 </html>
