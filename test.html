@@ -54,28 +54,22 @@
     </style>
   </head>
   <body>
-    <div class="jumbotron bg-dark">
-      <h1 class="text-center text-white">Welcome to Joo Lottery</h1>
-      <a href="http://localhost:8080/JooLottery/" class="float-right btn btn-info">Home</a>
-    </div>
-    <div class="container row">
-      <div class="col-md-12">
-        <br><br><br>
       <ul id='slideshow'>
-        <li><img src='http://placehold.it/500x200&text=Next Draw at 03:15:00 PM' alt=''></li>
-        <?php
-        for($i=100; $i<=999; $i++){
-         $j = rand(100,999);
-          echo "<li><img src='http://placehold.it/500x200&text=".$j."' alt=''></li>";
-        }
-        ?>
+        <li><img src='http://placehold.it/500x200&text=Mak Ka Veng' alt=''></li>
+        <li><img src='http://placehold.it/500x200&text=Ho Kit Zi' alt=''></li>
+        <li><img src='http://placehold.it/500x200&text=Aaden Chan' alt=''></li>
+        <li><img src='http://placehold.it/500x200&text=Kin Ho' alt=''></li>
+        <li><img src='http://placehold.it/500x200&text=Johnson Lam' alt=''></li>
+        <li><img src='http://placehold.it/500x200&text=Simon Leong' alt=''></li>
+        <li><img src='http://placehold.it/500x200&text=Veng Mak' alt=''></li>
+        <li><img src='http://placehold.it/500x200&text=Victor Vong' alt=''></li>
       </ul>
-      </div>
-    </div>
 
   <button id='again'>Again :-)</button>
   <script type="text/javascript">
-      var slides = $('#slideshow').find('li');
+        var slides = $('#slideshow').find('li');
+
+
       // move all to the right.
       slides.addClass('in');
 
@@ -84,8 +78,8 @@
 
       var currentIndex = 0;
 
-      var minimumCount = 10;
-      var maximumCount = 30;
+      var minimumCount = 50;
+      var maximumCount = 200;
       var count = 0;
 
       function nextSlide() {
@@ -114,7 +108,7 @@
       }
       }
 
-      //var interval = setInterval(nextSlide, 200);
+      var interval = setInterval(nextSlide, 120);
 
 
       $('#again').click(function(){
