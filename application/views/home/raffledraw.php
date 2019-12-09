@@ -35,42 +35,28 @@
           </div>
         </div>
       </nav>
+      <br><br><br><br>
+      <div class="container" id="showWinner">
 
-      <div class="container">
-        <div class="container">
-					<div class="row">
-            <div class="alert alert-success alert-dismissible" role="alert">
-               <button type="button" onclick="this.parentNode.parentNode.removeChild(this.parentNode);" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-				       <strong> <marquee><p style="font-family: Impact; font-size: 18pt" id='showWinner'></p></marquee>
-				    </div>
-					</div>
-				</div>
       </div>
         <!-- CONTENT START-->
         <div id="mainHolder">
-
             <section class="single">
             	<div class="demo">
-
                     <div id="firstDrumHolder" class="drumHolder fitImg">
                         <img src="<?php echo base_url(); ?>assets/raffledraw/raffledrumanimation/assets/stand.svg"/>
-
                         <!-- RAFFLE HOLDER-->
                         <div class="raffleHolder">
                             <img src="<?php echo base_url(); ?>assets/raffledraw/raffledrumanimation/assets/glass.svg"/>
-
                             <!-- TICKET RESULT-->
                             <div class="ticketResult"></div>
-
                             <div class="drumMask">
                             	<!-- DRUM ITEMS-->
                                 <div class="itemsWrapper"></div>
-
                                 <!-- DRUM TOP-->
                                 <div class="drumGlassHolder">
                                     <img src="<?php echo base_url(); ?>assets/raffledraw/raffledrumanimation/assets/glass.svg"/>
                                 </div>
-
                                 <!-- DRUM SIDE-->
                                 <div class="drumSideHolder">
                                     <div class="side"><img src="<?php echo base_url(); ?>assets/raffledraw/raffledrumanimation/assets/side.svg"/></div>
@@ -81,33 +67,36 @@
                               </div>
                         </div>
                     </div>
-
-                    <div class="action">
-                        <button id="toggleSpin" class="site">Toggle Spin</button>
-                        <button id="startSpin" class="site">Start Spin</button>
-                        <button id="stopSpin" class="site">Stop Spin</button>
-                        <button id="showResult" class="site">Show Result</button>
-
-                        <br/><br/>
-
-                        <button id="example1" class="site">Example 1</button>
-                        <button id="example2" class="site">Example 2</button>
-                        <button id="example3" class="site">Example 3</button>
-                        <button id="destroy" class="site">Destroy</button>
-
-                    </div>
                  </div>
             </section>
-
             <hr/>
-
-
         </div>
         <!-- CONTENT END-->
         <div class="">
           <?php
             if(isset($draw_data)){
-              print_r($draw_data);
+              if(count($draw_data) == 1){
+                echo print_r($draw_data);
+              }
+              if(count($draw_data) == 2){
+                $srno = 1;
+                foreach ($draw_data as $draw_row) {
+                  $winnerCount += 'Prize# '.$i.' : '.$date_time.' '.$draw_row['time'].' ('. $draw_row['number'].')';
+                  $srno++;
+                }
+              }
+              if(count($draw_data) == 3){
+                $srno = 1;
+                $winnerCount = '';
+                foreach ($draw_data as $draw_row) {
+                  $winnerCount .= 'Prize# '.$srno.' : '.$draw_row['date_time'].' '.$draw_row['time'].'<strong> ('. $draw_row['number'].')</strong>   &nbsp&nbsp&nbsp&nbsp';
+                  $srno++;
+                }
+                echo $winnerCount;
+              }
+              if(count($draw_data) == 4){
+                echo print_r($draw_data);
+              }
             }
           ?>
         </div>
@@ -122,6 +111,10 @@
       function showwinner(){
         winner =  "<?php echo $draw_data['winner']; ?>";
         return winner;
+      }
+      function drawprize(){
+        prize = "<?php echo $draw_prize['prize']; ?>";
+        return prize;
       }
     </script>
     </body>

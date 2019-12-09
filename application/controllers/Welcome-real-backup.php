@@ -68,8 +68,37 @@ class Welcome extends CI_Controller {
 		$currTime = date('h:i:s');
 		$this->load->model('home_model');
     if($this->home_model->searchDrawByDateTime($date_time, $currTime)){
-			$data['draw_data'] = $this->home_model->searchDrawByDateTime($date_time, $currTime);
-			$this->load->view('home/raffledraw', $data);
+			$data = $this->home_model->searchDrawByDateTime($date_time, $currTime);
+			foreach ($data as $draw_row){
+				#First Winner
+				if($draw_row['date_time'] == $date_time AND $currTime >= $draw_row['time']  AND $currTime < '01:00:00'){
+					$draw['draw_data'] = array('status' => 'yes', 'currDate' => $date_time, 'drawTime' => $draw_row['time'], 'winner' => $draw_row['number']);
+					$draw['draw_prize'] = array('draw#' => 1, 'prize' => 'First Prize: '.$date_time.' '.$draw_row['time'].' ('. $draw_row['number'].')');
+					$this->load->view('home/raffledraw', $draw);
+				}
+				#Second Winner
+				else if($draw_row['date_time'] == $date_time AND $currTime >= $draw_row['time']  AND $currTime < '03:00:00'){
+					$draw['draw_data'] = array('status' => 'yes', 'currDate' => $date_time, 'drawTime' => $draw_row['time'], 'winner' => $draw_row['number']);
+					$draw['draw_prize'] = array('draw#' => 2, 'prize' => 'Second Prize: '.$date_time.' '.$draw_row['time'].' ('. $draw_row['number'].')');
+					$this->load->view('home/raffledraw', $draw);
+				}
+				#Third Winner
+				else if($draw_row['date_time'] == $date_time AND $currTime >= $draw_row['time']  AND $currTime < '04:00:00'){
+					$draw['draw_data'] = array('status' => 'yes', 'currDate' => $date_time, 'drawTime' => $draw_row['time'], 'winner' => $draw_row['number']);
+					$draw['draw_prize'] = array('draw#' => 3, 'prize' => 'Third Prize: '.$date_time.' '.$draw_row['time'].' ('. $draw_row['number'].')');
+					$this->load->view('home/raffledraw', $draw);
+				}
+				#Fourth Winner
+				else if($draw_row['date_time'] == $date_time AND $currTime >= $draw_row['time']  AND $currTime < '23:59:00'){
+					$draw['draw_data'] = array('status' => 'yes', 'currDate' => $date_time, 'drawTime' => $draw_row['time'], 'winner' => $draw_row['number']);
+					$draw['draw_prize'] = array('draw#' => 4, 'prize' => 'Fourth Prize: '.$date_time.' '.$draw_row['time'].' ('. $draw_row['number'].')');
+					$this->load->view('home/raffledraw', $draw);
+				}
+				else{
+					$draw['draw_data'] = array('status' => 'Wait');
+					$this->load->view('home/raffledraw', $draw);
+				}
+			}
 	  }
     else{
 			$this->load->view('home/raffledraw');

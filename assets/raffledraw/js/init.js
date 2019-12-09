@@ -12,7 +12,7 @@ $(function() {
 		$('#firstDrumHolder').raffleDrumAnimation('result');
 	}, 6000);
 	setTimeout(function(){
-		$('#showWinner').html("<div class='alert alert-success container' role='alert' id='winner'>1st Winner is "+ showwinner() +"</div>");
+		$('#showWinner').html("<marquee><div class='alert alert-success container' role='alert' id='winner'>"+ drawprize() +"</div></marquee>");
 	}, 9000);
 
 	$('#example1').click(function(){
