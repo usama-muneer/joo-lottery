@@ -3,6 +3,7 @@
   {
     function __construct(){
       parent::__construct();
+      date_default_timezone_set('Asia/Karachi');
     }
     //Insert Messages code start
     function insert_message($data){
@@ -26,7 +27,6 @@
 
     //Fetch Draw data
     function get_draws(){
-      date_default_timezone_set('Asia/Karachi');
       $date = date('Y-m-d');
       $sql = "SELECT * FROM draw Where checked = 'Yes' and date_time ='".$date."' ORDER BY time";
       $data = $this->db->query($sql)->result_array();

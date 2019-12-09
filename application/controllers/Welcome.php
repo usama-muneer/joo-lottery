@@ -4,6 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Welcome extends CI_Controller {
 	function __construct(){
 	    parent::__construct();
+			date_default_timezone_set('Asia/Karachi');
 			if($this->session->userdata('logged_in') == true){
 				redirect(base_url('/adminhome'));
 			}
@@ -60,6 +61,27 @@ class Welcome extends CI_Controller {
 
 	public function test(){
 		$this->load->view('home/test');
+	}
+
+	public function raffledraw(){
+		$date_time = date('Y-m-d');
+		$currTime = date('h:m:s');
+		$this->load->model('home_model');
+    if($this->home_model->searchDrawByDate($date_time)){
+			$data = $this->home_model->searchDrawByDate($date_time);
+			foreach ($data as $draw_row){
+				if($draw_row['date_time'] == $date_time AND $currTime >= $draw_row['time'] ){
+					$draw['draw_data'] = array('status' => 'yes', 'currDate' => $date_time, 'drawTime' => $draw_row['time'], 'winner' => $draw_row['number']);
+					$this->load->view('home/raffledraw', $draw);
+				}else{
+					$draw['draw_data'] = array('status' => 'Wait');
+					$this->load->view('home/raffledraw', $draw);
+				}
+			}
+	  }
+    else{
+			$this->load->view('home/raffledraw');
+    }
 	}
 
 	public function admin_login(){
