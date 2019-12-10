@@ -1,1 +1,2 @@
 # JooLottery
+# joo-lottery
