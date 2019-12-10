@@ -16,7 +16,7 @@
     </head>
     <body>
       <!-- Navigation -->
-      <nav class="navbar navbar-expand-lg text-uppercase fixed-top" id="mainNav"  style="background-color: #5c0383; opacity: 90%;">
+      <nav class="navbar navbar-expand-lg text-uppercase" id="mainNav"  style="background-color: #5c0383; opacity: 90%;">
         <div class="container">
           <a class="navbar-brand js-scroll-trigger" href="#page-top">Joo Lottery</a>
           <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,10 +35,10 @@
           </div>
         </div>
       </nav>
-      <br><br><br><br>
       <div class="container" id="showWinner">
-
+        <?php if(isset($error)){echo $error;} ?>
       </div>
+
         <!-- CONTENT START-->
         <div id="mainHolder">
             <section class="single">
@@ -72,6 +72,57 @@
             <hr/>
         </div>
         <!-- CONTENT END-->
+        <!-- Footer -->
+        <footer class="footer text-center">
+          <div class="container">
+            <div class="row">
+
+              <!-- Footer Location -->
+              <div class="col-lg-4 mb-5 mb-lg-0">
+                <h4 class="text-uppercase mb-4">Location</h4>
+                <p class="lead mb-0">400004, Mumbai
+                  <br>India</p>
+              </div>
+
+              <!-- Footer Social Icons -->
+              <div class="col-lg-4 mb-5 mb-lg-0">
+                <h4 class="text-uppercase mb-4">Around the Web</h4>
+                <a class="btn btn-outline-light btn-social mx-1" href="#">
+                  <i class="fab fa-fw fa-facebook-f"></i>
+                </a>
+                <a class="btn btn-outline-light btn-social mx-1" href="#">
+                  <i class="fab fa-fw fa-twitter"></i>
+                </a>
+                <a class="btn btn-outline-light btn-social mx-1" href="#">
+                  <i class="fab fa-fw fa-linkedin-in"></i>
+                </a>
+                <a class="btn btn-outline-light btn-social mx-1" href="#">
+                  <i class="fab fa-fw fa-dribbble"></i>
+                </a>
+              </div>
+
+              <!-- Footer About Text -->
+              <div class="col-lg-4">
+                <h4 class="text-uppercase mb-4">Opening Hours</h4>
+                <p class="lead mb-0">Working Day: 24/7
+              </div>
+
+            </div>
+          </div>
+        </footer>
+
+        <!-- Copyright Section -->
+        <div class="copyright py-4 text-center bg-black">
+          <small class="text-white">Copyright &copy; 2019 Joo Lottery All Right  Reserved </small>
+        </div>
+
+        <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+        <div class="scroll-to-top d-lg-none position-fixed ">
+          <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top">
+            <i class="fa fa-chevron-up"></i>
+          </a>
+        </div>
+
         <div class="">
           <?php
             if(isset($draw_data)){
@@ -97,6 +148,11 @@
         winner =  "<?php echo $winner; ?>";
         return winner;
       }
+      $(function(){
+        if(<?php echo $winner;  ?> >= 1){
+          startDraw();
+        }
+      });
       function drawprize(){
         prize = "<?php echo $winnerCount; ?>";
         return prize;

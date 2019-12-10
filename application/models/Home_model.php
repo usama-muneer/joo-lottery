@@ -51,6 +51,18 @@
     }
 
     //Fetch Draw data vy given date & time
+    function updateDrawByDateTime(){
+      $date_time = date('Y-m-d');
+  		$currTime = date('H:i:s');
+      $sql1 = "SELECT * FROM draw Where date_time ='".$date_time."' AND time <='".$currTime."'";
+      $validate1 = $this->db->query($sql1)->result_array();
+      if($validate1){
+        $sql2 = "UPDATE draw SET checked = 'Yes' WHERE date_time ='".$date_time."' AND time <='".$currTime."'";
+        $validate2 = $this->db->query($sql2);
+      }
+    }
+
+    //Fetch Draw data vy given date & time
     function searchDrawByDateTime($date_time, $currTime){
       $sql1 = "SELECT * FROM draw Where date_time ='".$date_time."' AND time <='".$currTime."'";
       $validate1 = $this->db->query($sql1)->result_array();

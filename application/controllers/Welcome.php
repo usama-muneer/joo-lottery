@@ -28,6 +28,7 @@ class Welcome extends CI_Controller {
 	public function index(){
 		$data = array();
 		$this->load->model('home_model');
+    $update = $this->home_model->updateDrawByDateTime();
 		if($this->home_model->get_draws()){
 			$draw_data = $this->home_model->get_draws();
 	    $srno = 1;
@@ -75,14 +76,15 @@ class Welcome extends CI_Controller {
 
 	public function raffledraw(){
 		$date_time = date('Y-m-d');
-		$currTime = date('h:i:s');
+		$currTime = date('H:i:s');
 		$this->load->model('home_model');
     if($this->home_model->searchDrawByDateTime($date_time, $currTime)){
 			$data['draw_data'] = $this->home_model->searchDrawByDateTime($date_time, $currTime);
 			$this->load->view('home/raffledraw', $data);
 	  }
     else{
-			$this->load->view('home/raffledraw');
+			$data['error'] = '<marquee class="bg-light text-danger"><strong>Error Occured: Please try again later</strong></marquee>';
+			$this->load->view('home/raffledraw',$data);
     }
 	}
 

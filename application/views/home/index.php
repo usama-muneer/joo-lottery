@@ -144,11 +144,6 @@
                     $srno++;
                   }
                 }
-                else{
-                  echo "<tr>
-                              <td colspan=4 class='text-center text-info'><b>You haven't enter any draw</b></td>
-                            </tr>";
-                }
               ?>
             </tbody>
           </table>
@@ -156,11 +151,11 @@
 
       </div>
       <br><br>
-      <div class="container">
+      <div class="container w-100">
         <div class="row">
-          <div class="alert alert-success alert-dismissible" role="alert">
+          <div class="col-md-12 alert alert-success alert-dismissible" role="alert">
              <button type="button" onclick="this.parentNode.parentNode.removeChild(this.parentNode);" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-             <strong> <marquee><p style="font-family: Impact; font-size: 18pt"><?php if(isset($winnerCount)){ echo $winnerCount;} ?></p></marquee>
+             <strong> <marquee><p style="font-family: Impact; font-size: 18pt"><?php if(isset($winnerCount)){ echo $winnerCount;}else{echo 'First Draw will be held at 01:15 PM';} ?></p></marquee>
           </div>
         </div>
       </div>
@@ -268,8 +263,8 @@
         <!-- Footer Location -->
         <div class="col-lg-4 mb-5 mb-lg-0">
           <h4 class="text-uppercase mb-4">Location</h4>
-          <p class="lead mb-0">31200, Layyah
-            <br>Pakistan</p>
+          <p class="lead mb-0">400004, Mumbai
+            <br>India</p>
         </div>
 
         <!-- Footer Social Icons -->

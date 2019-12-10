@@ -3,7 +3,7 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'UA-86567323-32');
 
-$(function() {
+function startDraw() {
 	setTimeout(function(){
 		startRaffleAniamtion(1);
 	}, 2000);
@@ -13,7 +13,7 @@ $(function() {
 	}, 6000);
 	setTimeout(function(){
 		$('#showWinner').html("<marquee><div class='alert alert-success container' role='alert' id='winner'>"+ drawprize() +"</div></marquee>");
-	}, 9000);
+	}, 200);
 
 	$('#example1').click(function(){
 		startRaffleAniamtion(1);
@@ -46,7 +46,7 @@ $(function() {
 	$('#destroy').click(function(){
 		$('#firstDrumHolder').raffleDrumAnimation('destroy');
 	});
-});
+}
 
 function startRaffleAniamtion(con){
 	if(con == 1){
