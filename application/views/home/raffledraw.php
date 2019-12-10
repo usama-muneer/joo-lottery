@@ -75,27 +75,12 @@
         <div class="">
           <?php
             if(isset($draw_data)){
-              if(count($draw_data) == 1){
-                echo print_r($draw_data);
-              }
-              if(count($draw_data) == 2){
-                $srno = 1;
-                foreach ($draw_data as $draw_row) {
-                  $winnerCount += 'Prize# '.$i.' : '.$date_time.' '.$draw_row['time'].' ('. $draw_row['number'].')';
-                  $srno++;
-                }
-              }
-              if(count($draw_data) == 3){
-                $srno = 1;
-                $winnerCount = '';
-                foreach ($draw_data as $draw_row) {
-                  $winnerCount .= 'Prize# '.$srno.' : '.$draw_row['date_time'].' '.$draw_row['time'].'<strong> ('. $draw_row['number'].')</strong>   &nbsp&nbsp&nbsp&nbsp';
-                  $srno++;
-                }
-                echo $winnerCount;
-              }
-              if(count($draw_data) == 4){
-                echo print_r($draw_data);
+              $srno = 1;
+              $winnerCount = '';
+              foreach ($draw_data as $draw_row) {
+                $winnerCount .= '<strong>Prize# '.$srno.' : '.$draw_row['date_time'].' '.$draw_row['time'].' ('. $draw_row['number'].')</strong>   &nbsp&nbsp&nbsp&nbsp';
+                $winner = $draw_row['number'];
+                $srno++;
               }
             }
           ?>
@@ -109,11 +94,11 @@
 		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-86567323-32"></script>
     <script type="text/javascript">
       function showwinner(){
-        winner =  "<?php echo $draw_data['winner']; ?>";
+        winner =  "<?php echo $winner; ?>";
         return winner;
       }
       function drawprize(){
-        prize = "<?php echo $draw_prize['prize']; ?>";
+        prize = "<?php echo $winnerCount; ?>";
         return prize;
       }
     </script>

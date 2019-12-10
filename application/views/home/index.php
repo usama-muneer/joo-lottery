@@ -160,7 +160,7 @@
         <div class="row">
           <div class="alert alert-success alert-dismissible" role="alert">
              <button type="button" onclick="this.parentNode.parentNode.removeChild(this.parentNode);" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-             <strong> <marquee><p style="font-family: Impact; font-size: 18pt">Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor!</p></marquee>
+             <strong> <marquee><p style="font-family: Impact; font-size: 18pt"><?php if(isset($winnerCount)){ echo $winnerCount;} ?></p></marquee>
           </div>
         </div>
       </div>

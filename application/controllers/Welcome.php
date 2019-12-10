@@ -29,7 +29,17 @@ class Welcome extends CI_Controller {
 		$data = array();
 		$this->load->model('home_model');
 		if($this->home_model->get_draws()){
+			$draw_data = $this->home_model->get_draws();
+	    $srno = 1;
+	    $winnerCount = '';
+	    foreach ($draw_data as $draw_row) {
+	      $winnerCount .= '<strong>Prize# '.$srno.' : ' .$draw_row['date_time'].'  '.$draw_row['time'].' ( '. $draw_row['number'].' )</strong>   &nbsp&nbsp&nbsp&nbsp';
+	      $winner = $draw_row['number'];
+	      $srno++;
+			}
 			$data['draw_data'] = $this->home_model->get_draws();
+			$data['winnerCount'] = $winnerCount;
+			$data['winners'] = $winner;
 			$this->load->view('home/index', $data);
 	  }
     else{
